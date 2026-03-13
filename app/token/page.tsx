@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Nav } from "@/components/Nav";
 
 const SECTIONS = [
   "What It Is",
@@ -11,43 +12,9 @@ const SECTIONS = [
 export default function TokenPage() {
   return (
     <div className="min-h-screen bg-[oklch(0.96_0.01_285)]">
-      <header className="border-b border-[oklch(0.9_0.02_285)] bg-white sticky top-0 z-20">
-        <div className="flex items-center gap-8 px-8 py-4">
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <span className="flex items-center justify-center w-10 h-10 rounded bg-primary text-primary-foreground font-bold text-lg">
-              E
-            </span>
-            <span className="text-xl font-semibold tracking-tight text-foreground">
-              ENCLAVES
-            </span>
-          </Link>
-          <nav className="flex items-center gap-8 text-sm text-[oklch(0.35_0.02_285)]">
-            <Link href="/home" className="hover:text-foreground transition-colors">
-              Home
-            </Link>
-            <Link href="/how-it-works" className="hover:text-foreground transition-colors">
-              How It Works
-            </Link>
-            <Link href="/asset-classes" className="hover:text-foreground transition-colors">
-              Asset Classes
-            </Link>
-            <Link href="/my-assets" className="hover:text-foreground transition-colors">
-              My Assets
-            </Link>
-            <Link href="/my-profile" className="hover:text-foreground transition-colors">
-              My Profile
-            </Link>
-            <Link href="/token" className="text-primary font-medium">
-              Token
-            </Link>
-            <Link href="#" className="hover:text-foreground transition-colors">
-              About
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Nav active="Token" logoHref="/home" />
 
-      <main className="max-w-4xl mx-auto px-8 py-12">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12">
         <h1 className="text-3xl font-bold text-foreground mb-2">The ENCL Token</h1>
         <p className="text-lg text-muted-foreground mb-8">
           What It Is, How It Works, Why It Matters

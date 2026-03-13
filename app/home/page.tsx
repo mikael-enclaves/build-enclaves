@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Nav } from "@/components/Nav";
 import { MY_ASSETS } from "@/lib/my-assets-data";
 
 const ACTIVITY = [
@@ -40,41 +41,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[oklch(0.96_0.01_285)]">
-      <header className="border-b border-[oklch(0.9_0.02_285)] bg-white sticky top-0 z-20">
-        <div className="flex items-center gap-8 px-8 py-4">
-          <Link href="/home" className="flex items-center gap-2 shrink-0">
-            <span className="flex items-center justify-center w-10 h-10 rounded bg-primary text-primary-foreground font-bold text-lg">
-              E
-            </span>
-            <span className="text-xl font-semibold tracking-tight text-foreground">ENCLAVES</span>
-          </Link>
-          <nav className="flex items-center gap-8 text-sm text-[oklch(0.35_0.02_285)]">
-            <Link href="/home" className="text-primary font-medium">
-              Home
-            </Link>
-            <Link href="/how-it-works" className="hover:text-foreground transition-colors">
-              How It Works
-            </Link>
-            <Link href="/asset-classes" className="hover:text-foreground transition-colors">
-              Asset Classes
-            </Link>
-            <Link href="/my-assets" className="hover:text-foreground transition-colors">
-              My Assets
-            </Link>
-            <Link href="/my-profile" className="hover:text-foreground transition-colors">
-              My Profile
-            </Link>
-            <Link href="/token" className="hover:text-foreground transition-colors">
-              Token
-            </Link>
-            <Link href="#" className="hover:text-foreground transition-colors">
-              About
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Nav active="Home" logoHref="/home" />
 
-      <main className="max-w-6xl mx-auto px-8 py-12">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12">
         {/* Terminal prompt */}
         <div className="mb-8 font-mono">
           <p className="text-primary text-sm">

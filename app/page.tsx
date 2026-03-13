@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
+import { Nav } from "@/components/Nav";
 
 const STEPS = [
   { id: 1, title: "Your Details" },
@@ -282,32 +284,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[oklch(0.96_0.01_285)]">
-      {/* Top Header */}
-      <header className="border-b border-[oklch(0.9_0.02_285)] bg-white sticky top-0 z-20">
-        <div className="flex items-center gap-8 px-8 py-4">
-          <a href="/" className="flex items-center gap-2 shrink-0">
-            <span className="flex items-center justify-center w-10 h-10 rounded bg-primary text-primary-foreground font-bold text-lg">
-              E
-            </span>
-            <span className="text-xl font-semibold tracking-tight text-foreground">
-              ENCLAVES
-            </span>
-          </a>
-          <nav className="flex items-center gap-8 text-sm text-[oklch(0.35_0.02_285)]">
-            <a href="/home" className="hover:text-foreground transition-colors">Home</a>
-            <a href="/how-it-works" className="hover:text-foreground transition-colors">How It Works</a>
-            <a href="/asset-classes" className="hover:text-foreground transition-colors">Asset Classes</a>
-            <a href="/my-assets" className="hover:text-foreground transition-colors">My Assets</a>
-            <a href="/my-profile" className="hover:text-foreground transition-colors">My Profile</a>
-            <a href="/token" className="hover:text-foreground transition-colors">Token</a>
-            <a href="#" className="hover:text-foreground transition-colors">About</a>
-          </nav>
-        </div>
-      </header>
+      <Nav logoHref="/" />
 
-      <div className="flex">
-        {/* Left Sidebar */}
-        <aside className="w-64 shrink-0 border-r border-[oklch(0.9_0.02_285)] bg-white min-h-[calc(100vh-65px)] flex flex-col">
+      <div className="flex flex-col lg:flex-row">
+        {/* Left Sidebar — hidden on mobile */}
+        <aside className="hidden lg:flex w-64 shrink-0 border-r border-[oklch(0.9_0.02_285)] bg-white min-h-[calc(100vh-65px)] flex-col">
           {/* Trust Score */}
           <div className="p-4 bg-primary text-primary-foreground rounded-none">
             <p className="text-xs font-medium tracking-wider opacity-90">TRUST SCORE</p>
@@ -374,9 +355,30 @@ export default function Home() {
           </div>
         </aside>
 
+        {/* Mobile step selector */}
+        <div className="lg:hidden px-4 py-3 border-b border-[oklch(0.9_0.02_285)] bg-white overflow-x-auto">
+          <div className="flex gap-2 min-w-max pb-1">
+            {STEPS.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => setStep(s.id)}
+                className={`shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors touch-manipulation ${
+                  step === s.id
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted/50 text-muted-foreground"
+                }`}
+              >
+                <span>{s.id}</span>
+                <span className="hidden sm:inline">{s.title}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Main Content */}
-        <main className="flex-1 p-8 overflow-auto">
-          <div className="max-w-3xl mx-auto bg-white rounded-xl border border-[oklch(0.9_0.02_285)] shadow-sm p-8">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
+          <div className="max-w-3xl mx-auto bg-white rounded-xl border border-[oklch(0.9_0.02_285)] shadow-sm p-4 sm:p-6 lg:p-8">
             {/* Step 1: Tell Us About You */}
             {step === 1 && (
               <>
