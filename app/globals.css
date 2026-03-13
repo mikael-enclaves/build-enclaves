@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Enclave purple palette */
+  --enclave-dark: oklch(0.35 0.15 285);
+  --enclave-muted: oklch(0.55 0.12 285);
+  --enclave-light: oklch(0.92 0.06 285);
+  --background: oklch(0.96 0.01 285);
+  --foreground: oklch(0.2 0.02 285);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 285);
+  --primary: var(--enclave-dark);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0.01 285);
+  --muted: oklch(0.95 0.02 285);
+  --muted-foreground: oklch(0.5 0.02 285);
+  --border: oklch(0.9 0.02 285);
+  --input: oklch(0.92 0.02 285);
+  --ring: var(--enclave-muted);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: oklch(0.12 0.02 285);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.18 0.03 285);
+  --primary: var(--enclave-muted);
+  --primary-foreground: oklch(0.2 0.02 285);
+  --secondary: oklch(0.22 0.03 285);
+  --muted: oklch(0.22 0.03 285);
+  --muted-foreground: oklch(0.65 0.02 285);
+  --border: oklch(0.28 0.03 285);
+  --input: oklch(0.25 0.03 285);
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-enclave-dark: var(--enclave-dark);
+  --color-enclave-light: var(--enclave-light);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
