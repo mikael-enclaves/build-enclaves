@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ConditionalStatsBar } from "@/components/ConditionalStatsBar";
 
 export const metadata: Metadata = {
   title: "Enclave — RWA Tokenization Platform",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen font-sans overflow-x-hidden">{children}</body>
+      <body className="min-h-screen font-sans overflow-x-hidden">
+        <ConditionalStatsBar />
+        {children}
+      </body>
     </html>
   );
 }
